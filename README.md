@@ -1,16 +1,24 @@
-# basalt_task
+# BasaltHood
 
-A new Flutter project.
+Real-time & Historical Stock Data App
 
 ## Getting Started
+1. Clone the repo
+2. run 
+    ```sh
+        flutter pub get
+    ```
+3. Create a .env file in the rrot of the project and write the following:
+    ```sh
+        MARKETSTACK_KEY={{YOUR_API_KEY}}
+    ```
+    Get an API key from [here](https://marketstack.com/)
 
-This project is a starting point for a Flutter application.
+4. run the following command in terminal to generate the api key
+    ```sh
+        flutter pub run build_runner build --delete-conflicting-outputs
+    ```
+5. Run the app on device or emulator
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project is an assignment for a job interview. 

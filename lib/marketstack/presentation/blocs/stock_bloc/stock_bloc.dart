@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:basalt_task/core/error/failure.dart';
 import 'package:basalt_task/marketstack/data/model/stock_model.dart';
 import 'package:basalt_task/marketstack/data/model/stock_pagination_model.dart';
@@ -18,7 +16,7 @@ class StockBloc extends Bloc<StockEvent, StockState> {
   StockPaginationModel stockPaginationModel = StockPaginationModel.init();
 
   List<StockModel> _stockData = [];
-  List<StockModel> getStockData() => _stockData;
+  List<StockModel> get getStockData => _stockData;
   int _offset = 0;
   int limit = 20;
 
@@ -28,7 +26,13 @@ class StockBloc extends Bloc<StockEvent, StockState> {
       _stockData = [];
       emit(StockLoading());
       Either<Failure, StockPaginationModel> result =
-          await getStockDataUseCase.call(limit: limit, offset: _offset);
+          await getStockDataUseCase.call(
+        limit: limit,
+        offset: _offset,
+        dateFrom: event.dateFrom,
+        dateTo: event.dateTo,
+        symbol: event.symbol,
+      );
       _offset++;
       result.fold((l) => emit(StockError(error: l.message)), (r) {
         stockPaginationModel = r;
@@ -42,7 +46,13 @@ class StockBloc extends Bloc<StockEvent, StockState> {
           _offset <= stockPaginationModel.pagination.total ~/ limit) {
         emit(StockMoreLoading());
         Either<Failure, StockPaginationModel> result =
-            await getStockDataUseCase.call(limit: limit, offset: _offset);
+            await getStockDataUseCase.call(
+          limit: limit,
+          offset: _offset,
+          dateFrom: event.dateFrom,
+          dateTo: event.dateTo,
+          symbol: event.symbol,
+        );
         _offset++;
         result.fold((l) => emit(StockError(error: l.message)), (r) {
           stockPaginationModel = r;

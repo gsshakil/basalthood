@@ -8,9 +8,19 @@ class GetStockDataUseCase {
 
   GetStockDataUseCase({required this.marketStackRepository});
 
-  Future<Either<Failure, StockPaginationModel>> call(
-      {required int limit, required int offset}) async {
+  Future<Either<Failure, StockPaginationModel>> call({
+    required int limit,
+    required int offset,
+    required String dateFrom,
+    required String dateTo,
+    required String symbol,
+  }) async {
     return await marketStackRepository.getStockData(
-        limit: limit, offset: offset);
+      limit: limit,
+      offset: offset,
+      dateFrom: dateFrom,
+      dateTo: dateTo,
+      symbol: symbol,
+    );
   }
 }
