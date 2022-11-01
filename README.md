@@ -8,7 +8,7 @@ Real-time & Historical Stock Data App
     ```sh
         flutter pub get
     ```
-3. Create a .env file in the rrot of the project and write the following:
+3. Create a .env file in the root of the project and write the following:
     ```sh
         MARKETSTACK_KEY={{YOUR_API_KEY}}
     ```
