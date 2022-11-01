@@ -158,7 +158,7 @@ class _StockScreenState extends State<StockScreen> {
               }
               return RefreshIndicator(
                 onRefresh: () async => _stockBloc
-                  ..add(
+                  .add(
                     GetStockData(
                       dateFrom: DateFormat('yyyy-MM-dd')
                           .format(_dateRangeBloc.dateRange.start),
@@ -168,6 +168,7 @@ class _StockScreenState extends State<StockScreen> {
                     ),
                   ),
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
                   controller: _scrollController,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

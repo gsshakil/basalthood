@@ -29,7 +29,7 @@ class CartesianChart extends StatelessWidget {
         primaryXAxis: DateTimeAxis(),
         primaryYAxis: NumericAxis(
           minimum: 0,
-          maximum: 150,
+          maximum: 200,
           interval: 10,
           numberFormat: NumberFormat.simpleCurrency(decimalDigits: 0),
         ),
