@@ -1,11 +1,14 @@
 import 'package:basalt_task/core/di.dart';
 import 'package:basalt_task/core/internet_check_wrapper.dart';
+import 'package:basalt_task/marketstack/data/model/stock_model.dart';
 import 'package:basalt_task/marketstack/presentation/blocs/date_range_bloc/date_range_bloc.dart';
 import 'package:basalt_task/marketstack/presentation/blocs/stock_bloc/stock_bloc.dart';
+import 'package:basalt_task/marketstack/presentation/widgets/cartesian_chart.dart';
 import 'package:basalt_task/marketstack/presentation/widgets/stock_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class StockScreen extends StatefulWidget {
   const StockScreen({super.key, required this.symbol});
@@ -169,6 +172,8 @@ class _StockScreenState extends State<StockScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // Chart
+                      CartesianChart(stockData: _stockBloc.getStockData),
                       ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),

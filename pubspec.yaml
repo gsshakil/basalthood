@@ -45,6 +45,7 @@ dependencies:
   intl: ^0.17.0
   easy_autocomplete: ^1.6.0
   connectivity_plus: ^3.0.2
+  syncfusion_flutter_charts: ^20.3.52
 
 dev_dependencies:
   flutter_test:
